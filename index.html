@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bodegas Don Luis — Destilería Premium del Perú</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --copper:#7B4A2D;--copper-mid:#9A5E38;--copper-lt:#C4895A;
+  --copper-pale:#E8D5C4;--copper-wash:#F5EDE6;
+  --ink:#0A0806;--ink-soft:#160E09;--ash:#3D2B1F;
+  --stone:#8A7266;--cream:#FAF6F2;--white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 4rem;transition:background .4s,padding .4s,box-shadow .4s}
+nav.scrolled{background:rgba(10,8,6,.96);backdrop-filter:blur(16px);padding:.75rem 4rem;box-shadow:0 1px 0 rgba(123,74,45,.2)}
+.nav-logo img{height:48px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.45)}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.65);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--copper-lt)}
+.nav-cta{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--copper-lt);border:1px solid var(--copper);padding:.5rem 1.3rem;text-decoration:none;transition:background .25s,color .25s}
+.nav-cta:hover{background:var(--copper);color:var(--white)}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:680px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:var(--ink)}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 90% 70% at 50% 55%,#1e0e06 0%,#0A0806 70%)}
+.hero-texture{position:absolute;inset:0;opacity:.025;background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23C4895A'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/svg%3E")}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(123,74,45,.18) 0%,transparent 65%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.hero-content{position:relative;z-index:2;max-width:860px;padding:0 2rem}
+.hero-logo-wrap{margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
+.hero-logo-wrap img{height:120px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.4) brightness(.9)}
+.hero-eyebrow{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:var(--copper-lt);margin-bottom:1.8rem;opacity:0;animation:fadeUp .8s .45s forwards}
+.hero-title{font-family:var(--serif);font-size:clamp(3.2rem,7.5vw,6rem);font-weight:300;line-height:1.05;color:var(--white);margin-bottom:1.4rem;opacity:0;animation:fadeUp .9s .6s forwards}
+.hero-title em{color:var(--copper-lt);font-style:italic}
+.hero-sub{font-family:var(--serif);font-size:1.2rem;font-weight:300;line-height:1.65;color:rgba(255,255,255,.45);margin-bottom:2.8rem;opacity:0;animation:fadeUp .9s .8s forwards}
+.hero-actions{display:flex;gap:1.2rem;justify-content:center;opacity:0;animation:fadeUp .9s 1s forwards}
+.btn-primary{display:inline-block;font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;background:var(--copper);color:var(--white);padding:.95rem 2.4rem;text-decoration:none;border:1px solid var(--copper);transition:background .25s}
+.btn-primary:hover{background:var(--copper-mid)}
+.btn-outline{display:inline-block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;border:1px solid rgba(255,255,255,.22);color:rgba(255,255,255,.7);padding:.95rem 2.4rem;text-decoration:none;transition:border-color .25s,color .25s}
+.btn-outline:hover{border-color:var(--copper-lt);color:var(--copper-lt)}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:fadeIn 1s 1.5s forwards}
+.hero-scroll span{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--copper-lt),transparent);animation:scrollPulse 2.2s ease-in-out infinite}
+
+/* CONCURSO BANNER */
+.concurso-banner{background:var(--copper);padding:.9rem 4rem;display:flex;align-items:center;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.concurso-banner p{font-size:.8rem;color:rgba(255,255,255,.9);line-height:1.5}
+.concurso-banner strong{color:var(--white)}
+.concurso-banner a{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;background:var(--white);color:var(--copper);padding:.4rem 1.1rem;text-decoration:none;font-weight:500;white-space:nowrap;transition:background .2s}
+.concurso-banner a:hover{background:var(--copper-pale)}
+
+/* HERITAGE */
+.heritage{display:grid;grid-template-columns:1fr 1fr;background:var(--white)}
+.heritage-visual{position:relative;min-height:560px;background:var(--ink-soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.heritage-yr{position:absolute;font-family:var(--serif);font-size:14rem;font-weight:300;color:rgba(123,74,45,.06);line-height:1;bottom:-2rem;left:-1rem;pointer-events:none}
+.heritage-emblem img{width:200px;height:auto;opacity:.5;filter:brightness(0) invert(1) sepia(1) saturate(.5);position:relative;z-index:1}
+.heritage-content{padding:6rem 5rem;display:flex;flex-direction:column;justify-content:center}
+.section-label{font-size:.65rem;letter-spacing:.28em;text-transform:uppercase;color:var(--copper);margin-bottom:1rem}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--ink);margin-bottom:1.4rem}
+.section-title em{font-style:italic;color:var(--copper)}
+.section-body{font-size:.95rem;line-height:1.85;color:var(--stone);max-width:520px}
+.heritage-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:3.5rem;padding-top:3rem;border-top:1px solid rgba(123,74,45,.15)}
+.stat-num{font-family:var(--serif);font-size:2.6rem;font-weight:300;color:var(--copper);line-height:1;margin-bottom:.4rem}
+.stat-label{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+
+/* PORTFOLIO */
+.portfolio{padding:7rem 4rem;background:var(--cream)}
+.portfolio-header{display:grid;grid-template-columns:1fr 1fr;gap:4rem;margin-bottom:4rem;align-items:end}
+.category-tabs{display:flex;border-bottom:1px solid rgba(123,74,45,.2);margin-bottom:2.5rem;overflow-x:auto;gap:0}
+.tab-btn{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--stone);background:none;border:none;border-bottom:2px solid transparent;padding:.65rem 1.2rem;cursor:pointer;transition:color .2s,border-color .2s;margin-bottom:-1px;white-space:nowrap;font-family:var(--sans)}
+.tab-btn.active,.tab-btn:hover{color:var(--copper);border-bottom-color:var(--copper)}
+
+/* BRAND SECTIONS */
+.brand-section{margin-bottom:4rem}
+.brand-section-header{display:flex;align-items:center;gap:1.5rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid rgba(123,74,45,.15)}
+.brand-section-name{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--ink)}
+.brand-section-tag{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--copper);background:var(--copper-wash);padding:.3rem .7rem}
+.brand-section-desc{font-size:.85rem;color:var(--stone);line-height:1.7;max-width:680px;margin-bottom:1.5rem}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1.5px}
+.product-card{background:var(--white);display:flex;flex-direction:column;overflow:hidden;transition:transform .25s,box-shadow .25s;position:relative}
+.product-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(123,74,45,.12)}
+.product-card-img{aspect-ratio:1;overflow:hidden;background:#f0ebe5;display:flex;align-items:center;justify-content:center;position:relative}
+.product-card-img img{width:100%;height:100%;object-fit:contain;padding:.8rem;transition:transform .4s}
+.product-card:hover .product-card-img img{transform:scale(1.06)}
+.product-card-body{padding:1rem 1rem .9rem;flex:1;display:flex;flex-direction:column}
+.product-card-variety{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--copper);margin-bottom:.3rem}
+.product-card-name{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--ink);line-height:1.25;margin-bottom:.3rem}
+.product-card-sub{font-size:.75rem;color:var(--stone);line-height:1.5;flex:1}
+
+/* FEATURED BRAND CARD (wide) */
+.brand-feature{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--ink);margin-bottom:1.5px}
+.brand-feature-info{padding:3.5rem;display:flex;flex-direction:column;justify-content:center}
+.brand-feature-info .brand-section-name{color:var(--white)}
+.brand-feature-info .brand-section-tag{background:rgba(123,74,45,.3);color:var(--copper-lt)}
+.brand-feature-info .brand-section-desc{color:rgba(255,255,255,.5)}
+.brand-feature-imgs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.04)}
+.brand-feature-imgs .product-card{background:rgba(255,255,255,.03)}
+.brand-feature-imgs .product-card-variety{color:var(--copper-lt)}
+.brand-feature-imgs .product-card-name{color:var(--white)}
+.brand-feature-imgs .product-card-sub{color:rgba(255,255,255,.35)}
+.brand-feature-imgs .product-card-img{background:rgba(255,255,255,.05)}
+
+/* CATEGORIES DARK */
+.categories-dark{background:var(--ink);padding:7rem 4rem}
+.categories-dark .section-title{color:var(--white)}
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:4rem;background:rgba(255,255,255,.05)}
+.cat-item{background:var(--ink-soft);padding:3rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:1rem;transition:background .25s}
+.cat-item:hover{background:rgba(123,74,45,.12)}
+.cat-icon{width:54px;height:54px;border-radius:50%;border:1px solid rgba(123,74,45,.4);display:flex;align-items:center;justify-content:center}
+.cat-icon svg{width:24px;height:24px;stroke:var(--copper-lt);fill:none;stroke-width:1.5;stroke-linecap:round}
+.cat-title{font-family:var(--serif);font-size:1.2rem;color:var(--white)}
+.cat-brands-list{font-size:.74rem;color:var(--stone);line-height:1.9}
+
+/* MANIFESTO */
+.manifesto{background:var(--copper);padding:7rem 4rem;text-align:center}
+.manifesto-diamond{display:flex;align-items:center;gap:1.5rem;justify-content:center;margin-bottom:2.5rem}
+.manifesto-diamond-line{width:80px;height:1px;background:rgba(255,255,255,.3)}
+.manifesto-diamond-icon{width:8px;height:8px;background:rgba(255,255,255,.5);transform:rotate(45deg)}
+.manifesto-quote{font-family:var(--serif);font-size:clamp(1.7rem,3vw,2.6rem);font-weight:300;font-style:italic;line-height:1.45;color:var(--white);max-width:800px;margin:0 auto 2rem}
+.manifesto-attr{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+/* CONTACT */
+.contact-section{background:var(--ink);padding:7rem 4rem}
+.contact-section .section-title{color:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;margin-top:4rem;align-items:start}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-field{display:flex;flex-direction:column;gap:.4rem}
+.form-field label{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
+.form-field input,.form-field textarea,.form-field select{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);color:var(--white);font-family:var(--sans);font-size:.88rem;padding:.75rem .9rem;outline:none;transition:border-color .2s;resize:none}
+.form-field input::placeholder,.form-field textarea::placeholder{color:rgba(255,255,255,.18)}
+.form-field input:focus,.form-field textarea:focus{border-color:var(--copper)}
+.form-field select{appearance:none;cursor:pointer}
+.form-field select option{background:#160c05}
+.contact-info{display:flex;flex-direction:column;gap:2.2rem}
+.info-label{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--copper-lt);margin-bottom:.5rem}
+.info-value{font-family:var(--serif);font-size:1.05rem;color:rgba(255,255,255,.65);line-height:1.65}
+
+/* FOOTER */
+footer{background:#060504;padding:4.5rem 4rem 2.5rem}
+.footer-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.footer-logo img{height:56px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.4);opacity:.65;margin-bottom:1.2rem;display:block}
+.footer-tagline{font-size:.8rem;line-height:1.75;color:rgba(255,255,255,.25);max-width:220px}
+.footer-col-title{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--copper-lt);margin-bottom:1.2rem}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.footer-links a{font-size:.8rem;color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--copper-lt)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem}
+.footer-legal{font-size:.68rem;color:rgba(255,255,255,.18);line-height:1.65}
+.age-warning{font-size:.67rem;color:rgba(255,255,255,.18);text-align:right;max-width:270px;line-height:1.55}
+
+/* AGE GATE */
+.age-gate{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem}
+.age-gate.hidden{display:none}
+.age-gate-logo{margin-bottom:2.5rem}
+.age-gate-logo img{height:110px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.5)}
+.age-gate h2{font-family:var(--serif);font-size:1.7rem;font-weight:300;color:var(--white);margin-bottom:.8rem}
+.age-gate>p{font-size:.88rem;color:var(--stone);margin-bottom:2.5rem;max-width:360px}
+.age-gate-buttons{display:flex;gap:1rem}
+.age-yes{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;background:var(--copper);color:var(--white);border:none;padding:.9rem 2.5rem;cursor:pointer;font-weight:500;font-family:var(--sans);transition:background .2s}
+.age-yes:hover{background:var(--copper-mid)}
+.age-no{font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;background:transparent;color:var(--stone);border:1px solid rgba(255,255,255,.12);padding:.9rem 2.5rem;cursor:pointer;font-family:var(--sans);transition:border-color .2s}
+.age-note{position:absolute;bottom:2rem;font-size:.67rem;color:rgba(255,255,255,.15);max-width:420px;line-height:1.6}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .75s,transform .75s}
+.reveal.visible{opacity:1;transform:none}
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scrollPulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+/* TABS FILTER */
+.brand-section{display:none}
+.brand-section.active{display:block}
+
+@media(max-width:920px){
+  nav{padding:1rem 1.5rem}
+  nav.scrolled{padding:.7rem 1.5rem}
+  .nav-links{display:none}
+  .concurso-banner{padding:.9rem 1.5rem}
+  .portfolio{padding:5rem 1.5rem}
+  .categories-dark,.contact-section{padding:5rem 1.5rem}
+  .heritage{grid-template-columns:1fr}
+  .heritage-visual{min-height:260px}
+  .heritage-content{padding:3.5rem 1.5rem}
+  .portfolio-header{grid-template-columns:1fr;gap:1.5rem}
+  .cat-grid{grid-template-columns:repeat(2,1fr)}
+  .contact-grid{grid-template-columns:1fr;gap:3rem}
+  .footer-top{grid-template-columns:1fr 1fr;gap:2rem}
+  .hero-actions{flex-direction:column;align-items:center}
+  .manifesto{padding:5rem 1.5rem}
+  .brand-feature{grid-template-columns:1fr}
+  .brand-feature-imgs{grid-template-columns:repeat(3,1fr)}
+  .product-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+}
+</style>
+</head>
+<body>
+
+<!-- AGE GATE -->
+<div class="age-gate" id="ageGate">
+  <div class="age-gate-logo"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></div>
+  <h2>Bienvenido</h2>
+  <p>Este sitio contiene información sobre bebidas alcohólicas. Confirma que eres mayor de edad para continuar.</p>
+  <div class="age-gate-buttons">
+    <button class="age-yes" onclick="enterSite()">Soy mayor de 18 años</button>
+    <button class="age-no" onclick="window.location.href='https://google.com'">Soy menor de edad</button>
+  </div>
+  <p class="age-note">El consumo de alcohol es nocivo para la salud. Beber con moderación. Prohibida la venta de bebidas alcohólicas a menores de 18 años. D.L. 28681.</p>
+</div>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></a>
+  <ul class="nav-links">
+    <li><a href="#heritage">Historia</a></li>
+    <li><a href="#portfolio">Marcas</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="terminos.html">Concurso</a></li>
+  </ul>
+  <a href="#contacto" class="nav-cta">Distribución</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div><div class="hero-texture"></div><div class="hero-glow"></div>
+  <div class="hero-content">
+    <div class="hero-logo-wrap"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></div>
+    <p class="hero-eyebrow">Destilería Premium · Lima, Perú</p>
+    <h1 class="hero-title">El alma del<br><em>Perú</em> en cada copa</h1>
+    <p class="hero-sub">Tradición vitivinícola convertida en excelencia.<br>Desde los valles peruanos, para el mundo.</p>
+    <div class="hero-actions">
+      <a href="#portfolio" class="btn-primary">Explorar marcas</a>
+      <a href="#heritage" class="btn-outline">Nuestra historia</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Descubrir</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- CONCURSO BANNER -->
+<div class="concurso-banner">
+  <p>🏆 <strong>Concurso activo:</strong> Compra en tiendas Tambo y gana 1 de 4 TV Samsung. Vigente hasta el 12 de Julio 2026.</p>
+  <a href="terminos.html">Ver bases y T&amp;C →</a>
+</div>
+
+<!-- HERITAGE -->
+<section class="heritage" id="heritage">
+  <div class="heritage-visual">
+    <div class="heritage-yr">BDL</div>
+    <div class="heritage-emblem"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></div>
+  </div>
+  <div class="heritage-content">
+    <p class="section-label reveal">Nuestra historia</p>
+    <h2 class="section-title reveal">Tradición destilera<br><em>con alma peruana</em></h2>
+    <p class="section-body reveal">Bodegas Don Luis nació de la pasión por los destilados peruanos. Con raíces profundas en la tradición pisquera nacional, hemos construido un portafolio de marcas que representan lo mejor de la cultura licorera del Perú: desde los piscos más premiados hasta cervezas artesanales con carácter propio, pasando por los mejores vinos de Sudamérica.</p>
+    <div class="heritage-stats reveal">
+      <div><div class="stat-num">10+</div><div class="stat-label">Marcas en portafolio</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">Espíritu peruano</div></div>
+      <div><div class="stat-num">3</div><div class="stat-label">Piscos premium</div></div>
+      <div><div class="stat-num">30+</div><div class="stat-label">Variedades de vino</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <p class="section-label reveal">Portafolio</p>
+      <h2 class="section-title reveal">Nuestras<br><em>marcas</em></h2>
+    </div>
+    <p class="section-body reveal">Un portafolio cuidadosamente seleccionado que abarca desde el pisco premium peruano hasta los mejores vinos sudamericanos, cervezas artesanales y espirituosos de carácter.</p>
+  </div>
+
+  <div class="category-tabs">
+    <button class="tab-btn active" onclick="showSection('all',this)">Todo</button>
+    <button class="tab-btn" onclick="showSection('pisco',this)">Pisco</button>
+    <button class="tab-btn" onclick="showSection('ron',this)">Ron</button>
+    <button class="tab-btn" onclick="showSection('gin',this)">Gin</button>
+    <button class="tab-btn" onclick="showSection('vino-pe',this)">Vinos Peruanos</button>
+    <button class="tab-btn" onclick="showSection('vino-ar',this)">Vinos Argentinos</button>
+    <button class="tab-btn" onclick="showSection('vino-cl',this)">Vinos Chilenos</button>
+    <button class="tab-btn" onclick="showSection('cerveza',this)">Cerveza</button>
+    <button class="tab-btn" onclick="showSection('otros',this)">Otros</button>
+  </div>
+
+  <!-- ═══ CUATRO GALLOS ═══ -->
+  <div class="brand-section active" data-cat="pisco">
+    <div class="brand-feature">
+      <div class="brand-feature-info">
+        <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem">
+          <span class="brand-section-name">Cuatro Gallos</span>
+          <span class="brand-section-tag">Pisco Premium</span>
+        </div>
+        <p class="brand-section-desc">El pisco emblemático del portafolio Don Luis. Mosto Verde en 8 variedades (700ml), Pisco Puro en Quebranta, Acholado e Italia (700ml y 1.75L), y la exclusiva Colección de Artistas en ediciones especiales de autor.</p>
+        <p style="font-size:.72rem;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:1rem">DENOMINACIÓN DE ORIGEN PISCO · VALLE DE ICA, PERÚ</p>
+      </div>
+      <div class="brand-feature-imgs">
+        <div class="product-card">
+          <div class="product-card-img"><img src="img/cg_mv_quebranta.jpg" alt="Cuatro Gallos Mosto Verde Quebranta" loading="lazy"></div>
+          <div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Quebranta</div><div class="product-card-sub">700ml · 46% Vol.</div></div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img"><img src="img/cg_mv_acholado.jpg" alt="Cuatro Gallos Mosto Verde Acholado" loading="lazy"></div>
+          <div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Acholado</div><div class="product-card-sub">700ml · 46% Vol.</div></div>
+        </div>
+        <div class="product-card">
+          <div class="product-card-img"><img src="img/cg_mv_italia.jpg" alt="Cuatro Gallos Mosto Verde Italia" loading="lazy"></div>
+          <div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Italia</div><div class="product-card-sub">700ml · 46% Vol.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_mv_torontel.jpg" alt="MV Torontel" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Torontel</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_mv_albilla.jpg" alt="MV Albilla" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Albilla</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_mv_moscatel.jpg" alt="MV Moscatel" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Moscatel</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_mv_negra.jpg" alt="MV Negra Criolla" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Negra Criolla</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_mv_mollar.jpg" alt="MV Mollar" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Mollar</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_puro_quebranta.jpg" alt="Pisco Puro Quebranta" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Quebranta</div><div class="product-card-sub">700ml · 1.75L</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_puro_acholado.jpg" alt="Pisco Puro Acholado" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Acholado</div><div class="product-card-sub">700ml · 1.75L</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_puro_italia.jpg" alt="Pisco Puro Italia" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Italia</div><div class="product-card-sub">700ml · 1.75L</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_artistas_1.jpg" alt="Colección Artistas Quebranta" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Colección Artistas</div><div class="product-card-name">Quebranta</div><div class="product-card-sub">750ml · Edición especial</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_artistas_2.jpg" alt="Colección Artistas Torontel" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Colección Artistas</div><div class="product-card-name">Torontel</div><div class="product-card-sub">750ml · Edición especial</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_artistas_3.jpg" alt="Colección Artistas Acholado" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Colección Artistas</div><div class="product-card-name">Acholado</div><div class="product-card-sub">750ml · Edición especial</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cg_artistas_4.jpg" alt="Colección Artistas Italia" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Colección Artistas</div><div class="product-card-name">Italia</div><div class="product-card-sub">750ml · Edición especial</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ PANCHO FIERRO ═══ -->
+  <div class="brand-section active" data-cat="pisco">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Pancho Fierro</span>
+      <span class="brand-section-tag">Pisco Puro · Desde 1921</span>
+    </div>
+    <p class="brand-section-desc">Con la personalidad del icónico pintor costumbrista peruano. Pisco Puro en Quebranta, Acholado e Italia, disponible en formatos de 250ml, 750ml, 2 Litros y 4 Litros.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/pf_quebranta.jpg" alt="Pancho Fierro Quebranta" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Quebranta</div><div class="product-card-sub">250ml · 750ml · 2L · 4L</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/pf_acholado.jpg" alt="Pancho Fierro Acholado" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Acholado</div><div class="product-card-sub">250ml · 750ml · 2L</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/pf_italia.jpg" alt="Pancho Fierro Italia" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Pisco Puro</div><div class="product-card-name">Italia</div><div class="product-card-sub">750ml</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ DON ESTEBAN ═══ -->
+  <div class="brand-section active" data-cat="pisco">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Don Esteban</span>
+      <span class="brand-section-tag">Mosto Verde · Producción Limitada</span>
+    </div>
+    <p class="brand-section-desc">Cuatro variedades de Pisco Mosto Verde en formato 500ml con estuche artesanal. Producción limitada con denominación de origen Ica, Perú.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/donesteban_quebranta.jpg" alt="Don Esteban Quebranta" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Quebranta</div><div class="product-card-sub">500ml · Con estuche</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/donesteban_acholado.jpg" alt="Don Esteban Acholado" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Acholado</div><div class="product-card-sub">500ml · Con estuche</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/donesteban_italia.jpg" alt="Don Esteban Italia" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Italia</div><div class="product-card-sub">500ml · Con estuche</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/donesteban_torontel.jpg" alt="Don Esteban Torontel" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Mosto Verde</div><div class="product-card-name">Torontel</div><div class="product-card-sub">500ml · Con estuche</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ MANDATARIO RON ═══ -->
+  <div class="brand-section active" data-cat="ron">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Mandatario</span>
+      <span class="brand-section-tag">Ron Premium</span>
+    </div>
+    <p class="brand-section-desc">Ron añejo de carácter y distinción. Tres expresiones para cada ocasión: desde el accesible Añejo 6 Años hasta el exclusivo XO de colección.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/mandatario_anejo.jpg" alt="Mandatario Añejo 6 Años" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Ron Añejo</div><div class="product-card-name">Reserva 6 Años</div><div class="product-card-sub">125ml · 700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/mandatario_solera.jpg" alt="Mandatario Solera 12 Años" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Ron Solera</div><div class="product-card-name">12 Años</div><div class="product-card-sub">700ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/mandatario_xo.jpg" alt="Mandatario XO" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Ron XO</div><div class="product-card-name">Extra Old</div><div class="product-card-sub">700ml · Colección</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ LA REPÚBLICA GIN ═══ -->
+  <div class="brand-section active" data-cat="gin">
+    <div class="brand-section-header">
+      <span class="brand-section-name">La República</span>
+      <span class="brand-section-tag">Ginebra Artesanal</span>
+    </div>
+    <p class="brand-section-desc">Ginebra artesanal peruana en dos expresiones únicas: Andina y Amazónica. Botánicos seleccionados de la biodiversidad nacional crean perfiles aromáticos irrepetibles. 700ml · 42% Vol.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/larepublica_andina.jpg" alt="La República Andina" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Ginebra Artesanal</div><div class="product-card-name">Andina</div><div class="product-card-sub">700ml · 42% Vol.</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/larepublica_amazonica.jpg" alt="La República Amazónica" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Ginebra Artesanal</div><div class="product-card-name">Amazónica</div><div class="product-card-sub">700ml · 42% Vol.</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ E.COPELLO ═══ -->
+  <div class="brand-section active" data-cat="vino-pe">
+    <div class="brand-section-header">
+      <span class="brand-section-name">E.Copello</span>
+      <span class="brand-section-tag">Vinos Peruanos · Espumante</span>
+    </div>
+    <p class="brand-section-desc">La bodega vitivinícola peruana del portafolio. Vinos Semi Seco (Moscato, Borgoña, Rosé, Tinto), Gran Selecto Tinto seco y Espumante Demisec elaborado por método Charmat. 750ml.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_moscato.jpg" alt="E.Copello Moscato" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Semi Seco</div><div class="product-card-name">Moscato</div><div class="product-card-sub">750ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_borgona.jpg" alt="E.Copello Borgoña" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Semi Seco</div><div class="product-card-name">Borgoña</div><div class="product-card-sub">750ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_rose.jpg" alt="E.Copello Rosé" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Semi Seco</div><div class="product-card-name">Rosé</div><div class="product-card-sub">750ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_tinto.jpg" alt="E.Copello Tinto" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Semi Seco</div><div class="product-card-name">Tinto</div><div class="product-card-sub">750ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_granselecto.jpg" alt="E.Copello Gran Selecto" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Vino Seco</div><div class="product-card-name">Gran Selecto Tinto</div><div class="product-card-sub">750ml</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/ecopello_espumante.jpg" alt="E.Copello Espumante" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Espumante Demisec</div><div class="product-card-name">Espumante</div><div class="product-card-sub">750ml · Charmat</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ LAGARDE ═══ -->
+  <div class="brand-section active" data-cat="vino-ar">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Lagarde</span>
+      <span class="brand-section-tag">Vinos Argentinos · Bodega 1897</span>
+    </div>
+    <p class="brand-section-desc">Una de las bodegas más antiguas de Mendoza. 18 etiquetas en líneas Herny, Primeras Viñas, Proyecto Hermanas, Guarda, Green Farming, Lagarde Reserva y Teia. Malbec, Cabernet Sauvignon, Chardonnay, Pinot Noir y más.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/lagarde_1.jpg" alt="Lagarde" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Guarda</div><div class="product-card-name">Blend · Malbec · Cab. Franc</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/lagarde_2.jpg" alt="Lagarde Green Farming" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Green Farming</div><div class="product-card-name">Malbec</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/lagarde_3.jpg" alt="Lagarde Green Farming Rosé" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Green Farming</div><div class="product-card-name">Rosé</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/lagarde_4.jpg" alt="Lagarde Reserva" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Lagarde Reserva</div><div class="product-card-name">Malbec · Viogner</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ ALTAS CUMBRES ═══ -->
+  <div class="brand-section active" data-cat="vino-ar">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Altas Cumbres</span>
+      <span class="brand-section-tag">Vinos Argentinos · By Lagarde</span>
+    </div>
+    <p class="brand-section-desc">Elaborados en los viñedos de altura de los Andes mendocinos, donde el clima extremo forja uvas de concentración excepcional. Malbec y Cabernet Sauvignon de Mendoza, Argentina.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/altascumbres_malbec.jpg" alt="Altas Cumbres Malbec" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Viñedos de Familia</div><div class="product-card-name">Malbec</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/altascumbres_cab.jpg" alt="Altas Cumbres Cabernet" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Viñedos de Familia</div><div class="product-card-name">Cabernet Sauvignon</div><div class="product-card-sub">Mendoza, Argentina</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ CASAS PATRONALES ═══ -->
+  <div class="brand-section active" data-cat="vino-cl">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Casas Patronales</span>
+      <span class="brand-section-tag">Vinos Chilenos · 19 Etiquetas</span>
+    </div>
+    <p class="brand-section-desc">Amplio portafolio chileno: desde el icónico CP Sabio Carignan hasta las líneas Leal, Gran Reserva, Guarda, Maucho y Selected Reserve. Carmenere, Cabernet Sauvignon, Malbec, Viognier y más.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/cp_sabio.jpg" alt="CP Sabio Carignan" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Sabio</div><div class="product-card-name">Carignan</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cp_granreserva.jpg" alt="CP Gran Reserva" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Gran Reserva</div><div class="product-card-name">Carmenere · Cab. S. · Merlot</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cp_maucho.jpg" alt="CP Maucho" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Maucho</div><div class="product-card-name">Viognier · Carignan · Malbec</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/cp_reserva.jpg" alt="CP Reserva" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Reserva</div><div class="product-card-name">Cab. S. · Carmenere · Merlot</div><div class="product-card-sub">Chile</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ MONTE SUR ═══ -->
+  <div class="brand-section active" data-cat="vino-cl">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Monte Sur</span>
+      <span class="brand-section-tag">Vinos Chilenos · Casas Patronales</span>
+    </div>
+    <p class="brand-section-desc">La línea accesible y versátil del portafolio chileno. Cinco variedades para cada momento: Chardonnay, Cabernet Sauvignon, Carmenere, Merlot y Sauvignon Blanc.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/montesur_chardonnay.jpg" alt="Monte Sur Chardonnay" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Blanco</div><div class="product-card-name">Chardonnay</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/montesur_cab.jpg" alt="Monte Sur Cab. S." loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Tinto</div><div class="product-card-name">Cabernet Sauvignon</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/montesur_carmenere.jpg" alt="Monte Sur Carmenere" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Tinto</div><div class="product-card-name">Carmenere</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/montesur_merlot.jpg" alt="Monte Sur Merlot" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Tinto</div><div class="product-card-name">Merlot</div><div class="product-card-sub">Chile</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/montesur_sauv.jpg" alt="Monte Sur Sauvignon Blanc" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Blanco</div><div class="product-card-name">Sauvignon Blanc</div><div class="product-card-sub">Chile</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ PATRIOTA CERVEZA ═══ -->
+  <div class="brand-section active" data-cat="cerveza">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Patriota</span>
+      <span class="brand-section-tag">Cerveza Artesanal · Lima</span>
+    </div>
+    <p class="brand-section-desc">Cerveza artesanal con alma peruana. Cuatro estilos elaborados en Lima con ingredientes locales seleccionados. 330ml · 5% Vol. Lima Brewer.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/patriota_hoppy.jpg" alt="Patriota Hoppy Pilsener" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Artesanal</div><div class="product-card-name">Hoppy Pilsener</div><div class="product-card-sub">330ml · 5% Vol.</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/patriota_red.jpg" alt="Patriota Red Lager" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Artesanal</div><div class="product-card-name">Red Lager</div><div class="product-card-sub">330ml · 5% Vol.</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/patriota_blonde.jpg" alt="Patriota Blonde Ale" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Artesanal</div><div class="product-card-name">Blonde Ale</div><div class="product-card-sub">330ml · 5% Vol.</div></div></div>
+      <div class="product-card"><div class="product-card-img"><img src="img/patriota_ipa.jpg" alt="Patriota IPA" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Artesanal</div><div class="product-card-name">IPA</div><div class="product-card-sub">330ml · 6.8% Vol.</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══ NÓRDICA ═══ -->
+  <div class="brand-section active" data-cat="otros">
+    <div class="brand-section-header">
+      <span class="brand-section-name">Nórdica</span>
+      <span class="brand-section-tag">Gaseosa Premium</span>
+    </div>
+    <p class="brand-section-desc">Gaseosa premium Ginger Ale en formato 1.5L. Ideal como mixer de alta gama para el Chilcano de Pisco y cócteles de autor con el portafolio Bodegas Don Luis.</p>
+    <div class="product-grid">
+      <div class="product-card"><div class="product-card-img"><img src="img/nordica.jpg" alt="Nórdica Ginger Ale" loading="lazy"></div><div class="product-card-body"><div class="product-card-variety">Gaseosa Premium</div><div class="product-card-name">Ginger Ale</div><div class="product-card-sub">1.5L</div></div></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- CATEGORIES DARK -->
+<section class="categories-dark">
+  <div style="max-width:540px;margin-bottom:0">
+    <p class="section-label">Categorías</p>
+    <h2 class="section-title reveal" style="color:var(--white)">Un portafolio para<br><em style="color:var(--copper-lt)">cada momento</em></h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-item"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M8 3 Q12 2 16 3 L15 13 Q14 19 12 21 Q10 19 9 13 Z"/><line x1="12" y1="3" x2="12" y2="1"/></svg></div><div class="cat-title">Pisco</div><div class="cat-brands-list">Cuatro Gallos<br>Pancho Fierro · Don Esteban</div></div>
+    <div class="cat-item"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M5 3 L19 3 L17 13 Q16 19 12 21 Q8 19 7 13 Z"/><line x1="5" y1="7" x2="19" y2="7"/></svg></div><div class="cat-title">Vinos & Espumantes</div><div class="cat-brands-list">E.Copello (Perú)<br>Lagarde · Altas Cumbres (AR)<br>Casas Patronales · Monte Sur (CL)</div></div>
+    <div class="cat-item"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M9 3 L15 3 L16 9 Q17 15 12 19 Q7 15 8 9 Z"/><path d="M7 7 Q5 9 5 12"/></svg></div><div class="cat-title">Ron & Gin</div><div class="cat-brands-list">Mandatario Ron<br>Añejo 6A · Solera 12A · XO<br>La República Gin</div></div>
+    <div class="cat-item"><div class="cat-icon"><svg viewBox="0 0 24 24"><path d="M6 8 L18 8 L17 18 Q17 20 12 20 Q7 20 7 18 Z"/><path d="M9 8 L9 5 Q9 3 11 3 L13 3 Q15 3 15 5 L15 8"/></svg></div><div class="cat-title">Cerveza & Refrescos</div><div class="cat-brands-list">Patriota Artesanal<br>Hoppy · Red · Blonde · IPA<br>Nórdica Ginger Ale</div></div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<div class="manifesto">
+  <div class="manifesto-diamond"><div class="manifesto-diamond-line"></div><div class="manifesto-diamond-icon"></div><div class="manifesto-diamond-line"></div></div>
+  <p class="manifesto-quote">"El pisco no es solo un destilado. Es la historia del Perú en una copa: la tierra, el sol, la mano del maestro bodeguero y siglos de tradición."</p>
+  <p class="manifesto-attr">— Bodegas Don Luis · Destilería Premium del Perú</p>
+</div>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contacto">
+  <p class="section-label">Contacto & Distribución</p>
+  <h2 class="section-title reveal">Trabaja con<br><em style="color:var(--copper-lt)">nosotros</em></h2>
+  <div class="contact-grid">
+    <div>
+      <p class="section-body" style="color:rgba(255,255,255,.4);margin-bottom:2.5rem">¿Eres distribuidor, importador o tienes un establecimiento? Contáctanos y te presentamos nuestro portafolio completo con las mejores condiciones comerciales.</p>
+      <form class="contact-form" onsubmit="return false">
+        <div class="form-field"><label>Nombre completo</label><input type="text" placeholder="Tu nombre"></div>
+        <div class="form-field"><label>Empresa</label><input type="text" placeholder="Nombre de tu empresa o local"></div>
+        <div class="form-field"><label>Correo electrónico</label><input type="email" placeholder="correo@empresa.com"></div>
+        <div class="form-field"><label>Tipo de negocio</label>
+          <select><option value="">Selecciona una opción</option><option>Distribución nacional</option><option>Importación</option><option>Restaurante / Bar</option><option>Retail / C-Store / Tambo</option><option>Otro</option></select>
+        </div>
+        <div class="form-field"><label>Mensaje</label><textarea rows="4" placeholder="Cuéntanos sobre tu negocio..."></textarea></div>
+        <button type="submit" class="btn-primary" style="align-self:flex-start;margin-top:.5rem;cursor:pointer">Enviar consulta</button>
+      </form>
+    </div>
+    <div class="contact-info">
+      <div><p class="info-label">Sede principal</p><p class="info-value">Lima, Perú</p></div>
+      <div><p class="info-label">Contacto comercial</p><p class="info-value">inteligencia.comercial@bodegasdonluis.pe</p></div>
+      <div><p class="info-label">RUC</p><p class="info-value">20451583060</p></div>
+      <div><p class="info-label">Concurso activo</p><p class="info-value"><a href="terminos.html" style="color:var(--copper-lt);text-decoration:none">Compra y Gana 4 TV Samsung →</a><br><span style="font-size:.78rem;color:var(--stone)">Compra en Tambo hasta el 12 Jul 2026</span></p></div>
+      <div style="border-top:1px solid rgba(123,74,45,.2);padding-top:2rem"><p style="font-size:.72rem;color:var(--stone);line-height:1.75">El consumo de alcohol es nocivo para la salud. Beber con moderación. Prohibida la venta de bebidas alcohólicas a menores de 18 años. D.L. 28681.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></div>
+      <p class="footer-tagline">Destilería premium del Perú. Tradición, calidad y pasión en cada botella desde Lima para el mundo.</p>
+    </div>
+    <div>
+      <p class="footer-col-title">Pisco & Ron</p>
+      <ul class="footer-links">
+        <li><a href="#">Cuatro Gallos</a></li><li><a href="#">Pancho Fierro</a></li>
+        <li><a href="#">Don Esteban</a></li><li><a href="#">Mandatario Ron</a></li>
+        <li><a href="#">La República Gin</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Vinos</p>
+      <ul class="footer-links">
+        <li><a href="#">E.Copello (Perú)</a></li><li><a href="#">Lagarde (Argentina)</a></li>
+        <li><a href="#">Altas Cumbres (AR)</a></li><li><a href="#">Casas Patronales (CL)</a></li>
+        <li><a href="#">Monte Sur (CL)</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="footer-col-title">Empresa</p>
+      <ul class="footer-links">
+        <li><a href="#heritage">Historia</a></li><li><a href="#contacto">Distribución</a></li>
+        <li><a href="terminos.html">Concurso · T&amp;C</a></li>
+        <li><a href="mailto:inteligencia.comercial@bodegasdonluis.pe">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p class="footer-legal">© 2026 Bodegas Don Luis S.A.C. · RUC 20451583060 · Lima, Perú<br>El alcohol en exceso es dañino. Prohibida la venta a menores de 18 años.</p>
+    <p class="age-warning">Prohibida la venta de bebidas alcohólicas a menores de 18 años. D.L. 28681.</p>
+  </div>
+</footer>
+
+<script>
+if(sessionStorage.getItem('ageVerified')) document.getElementById('ageGate').classList.add('hidden');
+function enterSite(){document.getElementById('ageGate').classList.add('hidden');sessionStorage.setItem('ageVerified','true')}
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>60));
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function showSection(cat, btn){
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  const sections = document.querySelectorAll('.brand-section');
+  sections.forEach(s=>{
+    if(cat==='all'){
+      s.classList.add('active');
+    } else {
+      s.classList.toggle('active', s.dataset.cat===cat);
+    }
+  });
+}
+</script>
+</body>
+</html>

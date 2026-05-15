@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos y Condiciones — Compra y Gana 4 TV Samsung | Bodegas Don Luis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --copper:#7B4A2D;--copper-mid:#9A5E38;--copper-lt:#C4895A;
+  --copper-pale:#E8D5C4;--copper-wash:#F5EDE6;
+  --ink:#0A0806;--ink-soft:#160E09;--stone:#7A6860;--ash:#3D2B1F;
+  --cream:#FAF6F2;--white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--cream);color:var(--ink);min-height:100vh}
+
+/* PROGRESS BAR */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:var(--copper);z-index:200;width:0%;transition:width .1s linear}
+
+/* HEADER */
+.site-header{background:var(--ink);padding:1.2rem 2rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 1px 0 rgba(123,74,45,.25)}
+.site-header img{height:48px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.45)}
+.back-link{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.back-link:hover{color:var(--copper-lt)}
+
+/* HERO */
+.hero-strip{background:linear-gradient(135deg,#1a0c06 0%,var(--copper) 100%);padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.hero-strip::before{content:'COMPRA Y GANA';position:absolute;font-family:var(--serif);font-size:8rem;font-weight:300;color:rgba(255,255,255,.04);white-space:nowrap;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;letter-spacing:.1em}
+.hero-strip-eyebrow{font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:.8rem}
+.hero-strip-title{font-family:var(--serif);font-size:clamp(1.8rem,5vw,2.8rem);font-weight:300;color:var(--white);line-height:1.15;margin-bottom:.6rem}
+.hero-strip-title strong{font-weight:500}
+.hero-strip-sub{font-size:.85rem;color:rgba(255,255,255,.65);max-width:460px;margin:0 auto 1.5rem;line-height:1.65}
+.hero-strip-ruc{font-size:.7rem;color:rgba(255,255,255,.35);letter-spacing:.08em}
+
+/* PRIZE BANNER */
+.prize-banner{background:var(--white);border-bottom:3px solid var(--copper);padding:1.5rem 2rem}
+.prize-inner{max-width:720px;margin:0 auto;display:flex;gap:1.5rem;align-items:center}
+.prize-icon{width:52px;height:52px;background:var(--copper);border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prize-icon svg{width:26px;height:26px;fill:none;stroke:var(--white);stroke-width:1.8;stroke-linecap:round}
+.prize-text-title{font-family:var(--serif);font-size:1.2rem;font-weight:500;color:var(--ink);margin-bottom:.25rem}
+.prize-text-body{font-size:.82rem;color:var(--stone);line-height:1.6}
+.prize-badge{background:var(--copper);color:var(--white);font-size:.62rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .7rem;border-radius:2px;margin-top:.4rem;display:inline-block}
+
+/* VIGENCIA STRIP */
+.vigencia-strip{background:var(--copper-wash);border-top:1px solid var(--copper-pale);border-bottom:1px solid var(--copper-pale);padding:1rem 2rem}
+.vigencia-inner{max-width:720px;margin:0 auto;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.vigencia-item{text-align:center}
+.vigencia-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--stone);margin-bottom:.2rem}
+.vigencia-val{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--copper)}
+
+/* STEPS */
+.steps-wrap{background:var(--ink);padding:2.5rem 2rem}
+.steps-inner{max-width:720px;margin:0 auto}
+.steps-title{font-family:var(--serif);font-size:1.3rem;font-weight:300;color:var(--white);margin-bottom:1.8rem;padding-bottom:1rem;border-bottom:1px solid rgba(123,74,45,.3)}
+.steps-grid{display:flex;flex-direction:column;gap:1rem}
+.step{display:flex;gap:1.2rem;align-items:flex-start}
+.step-num{width:30px;height:30px;background:var(--copper);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.9rem;font-weight:500;color:var(--white);flex-shrink:0;margin-top:.1rem}
+.step-title{font-size:.88rem;font-weight:500;color:var(--white);margin-bottom:.2rem}
+.step-desc{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.65}
+.whatsapp-box{background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.25);padding:.9rem 1.2rem;margin-top:1rem;border-radius:2px;display:flex;align-items:center;gap:.8rem}
+.whatsapp-box svg{flex-shrink:0;width:22px;height:22px;fill:#25D366}
+.whatsapp-box span{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.5}
+.whatsapp-box strong{color:#25D366}
+
+/* MAIN CONTENT */
+.content-wrap{max-width:720px;margin:0 auto;padding:2.5rem 2rem 5rem}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;gap:1rem;margin:2rem 0}
+.divider-line{flex:1;height:1px;background:rgba(123,74,45,.18)}
+.divider-diamond{width:6px;height:6px;background:var(--copper-lt);transform:rotate(45deg)}
+
+/* TYC CARD */
+.tyc-card{background:var(--white);border:1px solid rgba(123,74,45,.1);border-top:3px solid var(--copper)}
+.tyc-header{padding:2rem 2.5rem 1.5rem;border-bottom:1px solid rgba(123,74,45,.1)}
+.tyc-label{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--copper);margin-bottom:.5rem}
+.tyc-main-title{font-family:var(--serif);font-size:1.55rem;font-weight:300;color:var(--ink);line-height:1.25}
+.tyc-meta{font-size:.75rem;color:var(--stone);margin-top:.6rem;line-height:1.6}
+
+/* TYC ARTICLES */
+.tyc-article{padding:1.8rem 2.5rem;border-bottom:1px solid rgba(123,74,45,.08)}
+.tyc-article:last-child{border-bottom:none}
+.tyc-art-num{font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--copper);margin-bottom:.35rem}
+.tyc-art-title{font-family:var(--serif);font-size:1.1rem;font-weight:500;color:var(--ink);margin-bottom:.9rem}
+.tyc-text{font-size:.86rem;line-height:1.85;color:var(--stone);margin-bottom:.7rem}
+.tyc-text:last-child{margin-bottom:0}
+.tyc-text strong{color:var(--ash);font-weight:500}
+.tyc-list{font-size:.86rem;line-height:1.85;color:var(--stone);padding-left:1.4rem;margin-bottom:.7rem}
+.tyc-list li{margin-bottom:.3rem}
+.tyc-list li::marker{color:var(--copper)}
+.tyc-highlight{background:var(--copper-wash);border-left:3px solid var(--copper);padding:.75rem 1rem;font-size:.83rem;color:var(--ash);line-height:1.7;margin:.7rem 0}
+.tyc-highlight strong{color:var(--copper)}
+.tyc-2col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:.7rem 0}
+.tyc-data-item{background:var(--copper-wash);padding:.8rem 1rem}
+.tyc-data-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--stone);margin-bottom:.25rem}
+.tyc-data-val{font-family:var(--serif);font-size:1rem;font-weight:500;color:var(--copper)}
+.tyc-prize-row{display:flex;align-items:center;gap:1rem;padding:.9rem 1rem;border:1px solid rgba(123,74,45,.18);margin:.5rem 0}
+.tyc-prize-n{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--copper);min-width:2.2rem;text-align:center}
+.tyc-prize-name{font-weight:500;font-size:.9rem;color:var(--ink);margin-bottom:.15rem}
+.tyc-prize-detail{font-size:.78rem;color:var(--stone)}
+.data-list{display:flex;flex-direction:column;gap:.4rem;margin:.7rem 0}
+.data-row{display:flex;gap:.8rem;align-items:flex-start;font-size:.85rem}
+.data-row-label{min-width:7rem;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--copper);padding-top:.1rem;flex-shrink:0}
+.data-row-val{color:var(--stone);line-height:1.6}
+
+/* ACCEPTANCE */
+.acceptance-block{background:var(--copper);padding:2rem 2.5rem;text-align:center}
+.acceptance-block p{font-family:var(--serif);font-size:1rem;font-style:italic;color:var(--white);line-height:1.7;margin-bottom:.6rem}
+.acceptance-block span{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ALCOHOL WARNING */
+.alcohol-warning{background:var(--ink);padding:1.2rem 2rem;text-align:center}
+.alcohol-warning p{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.3)}
+
+/* FOOTER */
+.page-footer{background:#060504;padding:2.5rem 2rem;text-align:center}
+.page-footer img{height:42px;width:auto;filter:brightness(0) invert(1) sepia(1) saturate(.4);opacity:.55;display:block;margin:0 auto 1rem}
+.footer-note{font-size:.7rem;color:rgba(255,255,255,.2);line-height:1.7;max-width:500px;margin:0 auto}
+.footer-contact{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:.5rem}
+.footer-contact a{color:var(--copper-lt);text-decoration:none}
+
+@media(max-width:600px){
+  .site-header{padding:1rem 1.2rem}
+  .hero-strip{padding:2.2rem 1.2rem 2rem}
+  .prize-inner{flex-direction:column}
+  .vigencia-inner{gap:1.2rem}
+  .steps-wrap{padding:2rem 1.2rem}
+  .content-wrap{padding:2rem 1.2rem 4rem}
+  .tyc-header,.tyc-article{padding:1.5rem}
+  .acceptance-block{padding:1.8rem 1.5rem}
+  .tyc-2col{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a href="index.html"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></a>
+  <a href="index.html" class="back-link">← Volver al sitio</a>
+</header>
+
+<!-- HERO -->
+<div class="hero-strip">
+  <p class="hero-strip-eyebrow">Bodegas Don Luis S.A.C. · Campaña Promocional Oficial</p>
+  <h1 class="hero-strip-title">Compra y Gana<br><strong>1 de 4 TV Samsung</strong></h1>
+  <p class="hero-strip-sub">Compra en tiendas Tambo a nivel nacional, registra tu ticket y participa en el sorteo de cuatro televisores Samsung.</p>
+  <p class="hero-strip-ruc">RUC 20451583060 · Bodegas Don Luis S.A.C.</p>
+</div>
+
+<!-- PRIZE BANNER -->
+<div class="prize-banner">
+  <div class="prize-inner">
+    <div class="prize-icon">
+      <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 4 0v2"/><path d="M16 7V5a2 2 0 0 0-4 0v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="8" y1="14" x2="16" y2="14"/></svg>
+    </div>
+    <div>
+      <div class="prize-text-title">Premio: 4 Televisores Samsung</div>
+      <div class="prize-text-body">Un (1) televisor por ganador. Sorteo aleatorio electrónico entre todas las participaciones válidas registradas durante la campaña.</div>
+      <span class="prize-badge">4 Ganadores · 1 TV Samsung cada uno</span>
+    </div>
+  </div>
+</div>
+
+<!-- VIGENCIA -->
+<div class="vigencia-strip">
+  <div class="vigencia-inner">
+    <div class="vigencia-item">
+      <div class="vigencia-label">Inicio de campaña</div>
+      <div class="vigencia-val">01 de Junio 2026</div>
+    </div>
+    <div class="vigencia-item">
+      <div class="vigencia-label">Cierre de registros</div>
+      <div class="vigencia-val">14 de Julio 2026</div>
+    </div>
+    <div class="vigencia-item">
+      <div class="vigencia-label">Fecha de sorteo</div>
+      <div class="vigencia-val">20 de Julio 2026</div>
+    </div>
+    <div class="vigencia-item">
+      <div class="vigencia-label">Hora del sorteo</div>
+      <div class="vigencia-val">10:00 – 10:30 hrs</div>
+    </div>
+  </div>
+</div>
+
+<!-- STEPS -->
+<div class="steps-wrap">
+  <div class="steps-inner">
+    <h2 class="steps-title">¿Cómo participar?</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Compra en tiendas Tambo</div>
+          <div class="step-desc">Adquiere Pisco Cuatro Gallos Puro 700ml o Ron Mandatario Añejo 700ml. Por cada S/35 de compra obtienes una (1) opción de participación.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Fotografía tu ticket</div>
+          <div class="step-desc">Toma una foto clara y legible de tu comprobante de compra. Tienes hasta <strong>48 horas</strong> después de la compra para registrarte.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Envía por WhatsApp con tus datos</div>
+          <div class="step-desc">Envía al número oficial: foto del ticket, nombres y apellidos, DNI o CE, número celular, distrito/ciudad y declaración de ser mayor de 18 años.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">¡Espera el sorteo del 20 de Julio!</div>
+          <div class="step-desc">Cuantas más compras de S/35 registres, más opciones acumulas. El sorteo es aleatorio y electrónico entre todas las participaciones válidas.</div>
+        </div>
+      </div>
+    </div>
+    <div class="whatsapp-box" style="margin-top:1.5rem">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+      <span>WhatsApp oficial de la campaña: <strong>+1 (930) 201-1408</strong><br>Envía tu ticket dentro de las 48 horas posteriores a tu compra.</span>
+    </div>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content-wrap">
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <div class="tyc-card">
+    <div class="tyc-header">
+      <p class="tyc-label">Documento oficial · Bases completas</p>
+      <h2 class="tyc-main-title">Términos y Condiciones<br>Campaña "Compra y Gana 1 de 4 TV Samsung"</h2>
+      <p class="tyc-meta">Bodegas Don Luis S.A.C. · RUC 20451583060 · Lima, Perú<br>Vigencia: 01 de Junio – 12 de Julio 2026 · Cierre de registros: 14 de Julio 2026 · Sorteo: 20 de Julio 2026</p>
+    </div>
+
+    <!-- 1. ORGANIZADOR -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">01</p>
+      <h3 class="tyc-art-title">Organizador</h3>
+      <p class="tyc-text">La presente campaña promocional es organizada por <strong>Bodegas Don Luis S.A.C.</strong>, identificada con RUC <strong>20451583060</strong>, con domicilio en Perú, en adelante <strong>"EL ORGANIZADOR"</strong>.</p>
+      <p class="tyc-text">La promoción se desarrolla en alianza comercial con <strong>tiendas Tambo</strong> y sus establecimientos afiliados a nivel nacional.</p>
+    </div>
+
+    <!-- 2. VIGENCIA -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">02</p>
+      <h3 class="tyc-art-title">Vigencia</h3>
+      <p class="tyc-text">La campaña es por tiempo limitado y se desarrollará desde el <strong>01 de Junio</strong> hasta el <strong>12 de Julio 2026</strong>, ambas fechas inclusive.</p>
+      <div class="tyc-highlight">Solo participarán las compras realizadas dentro de dicho periodo y registradas dentro del plazo máximo de <strong>48 horas posteriores a la compra</strong> al WhatsApp oficial de la campaña. Participaciones fuera del plazo no serán consideradas. Los participantes solo podrán registrarse hasta las <strong>24:00 horas del 14 de Julio del 2026</strong>.</div>
+    </div>
+
+    <!-- 3. ÁMBITO -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">03</p>
+      <h3 class="tyc-art-title">Ámbito territorial</h3>
+      <p class="tyc-text">La promoción aplica para compras realizadas en <strong>todas las tiendas Tambo participantes a nivel nacional</strong>.</p>
+    </div>
+
+    <!-- 4. PRODUCTOS -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">04</p>
+      <h3 class="tyc-art-title">Productos participantes</h3>
+      <p class="tyc-text">Participan las siguientes marcas comercializadas por EL ORGANIZADOR, debidamente identificadas en la publicidad de la campaña:</p>
+      <div class="tyc-2col">
+        <div class="tyc-data-item">
+          <div class="tyc-data-label">Pisco</div>
+          <div class="tyc-data-val">Cuatro Gallos Puro 700ml</div>
+        </div>
+        <div class="tyc-data-item">
+          <div class="tyc-data-label">Ron</div>
+          <div class="tyc-data-val">Mandatario Añejo 700ml</div>
+        </div>
+      </div>
+      <p class="tyc-text">Ambos productos deben ser comprados en tiendas Tambo participantes durante el período de vigencia.</p>
+    </div>
+
+    <!-- 5. MECÁNICA -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">05</p>
+      <h3 class="tyc-art-title">Mecánica de participación</h3>
+      <div class="tyc-highlight">Por cada <strong>S/35 de compra en las marcas auspiciadoras</strong>, el consumidor obtiene <strong>una (1) opción electrónica para el sorteo</strong>. A mayor número de compras, mayores opciones acumuladas.</div>
+      <p class="tyc-text">Para participar, el consumidor deberá:</p>
+      <ul class="tyc-list">
+        <li>Comprar al menos S/35 en las marcas participantes en tiendas Tambo.</li>
+        <li>Tomar una fotografía <strong>clara y legible</strong> del ticket de compra.</li>
+        <li>Enviar al número oficial de WhatsApp <strong>+1 (930) 201-1408</strong>:
+          <ul style="margin-top:.4rem;padding-left:1.2rem">
+            <li>Foto del ticket</li>
+            <li>Nombres y apellidos</li>
+            <li>DNI o Carné de Extranjería</li>
+            <li>Número de celular</li>
+            <li>Distrito / ciudad</li>
+            <li>Declaración de ser mayor de 18 años</li>
+          </ul>
+        </li>
+        <li>Aceptar expresamente estos T&amp;C y la política de tratamiento de datos.</li>
+      </ul>
+      <p class="tyc-text">Cada registro equivaldrá a <strong>una opción válida en el sistema aleatorio del sorteo</strong>.</p>
+    </div>
+
+    <!-- 6. VALIDACIÓN -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">06</p>
+      <h3 class="tyc-art-title">Validación de participaciones</h3>
+      <p class="tyc-text">EL ORGANIZADOR validará:</p>
+      <ul class="tyc-list">
+        <li>Autenticidad del ticket</li>
+        <li>Fecha dentro de la vigencia</li>
+        <li>Compra en tienda participante</li>
+        <li>Coincidencia de productos participantes</li>
+        <li>Legibilidad del comprobante</li>
+        <li>Ausencia de fraude o duplicidad</li>
+      </ul>
+      <p class="tyc-text" style="margin-top:.8rem">No serán válidos:</p>
+      <ul class="tyc-list">
+        <li>Tickets adulterados o repetidos</li>
+        <li>Fotos ilegibles o fuera de fecha</li>
+        <li>Tickets anulados o devueltos</li>
+        <li>Capturas falsas o editadas digitalmente</li>
+      </ul>
+      <div class="tyc-highlight">EL ORGANIZADOR podrá solicitar el <strong>ticket físico original</strong> para la entrega del premio.</div>
+    </div>
+
+    <!-- 7. SORTEO -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">07</p>
+      <h3 class="tyc-art-title">Sorteo</h3>
+      <p class="tyc-text">Se realizará un <strong>sorteo aleatorio electrónico</strong> entre todas las opciones válidas acumuladas.</p>
+      <div class="tyc-2col">
+        <div class="tyc-data-item"><div class="tyc-data-label">Número de ganadores</div><div class="tyc-data-val">4 personas</div></div>
+        <div class="tyc-data-item"><div class="tyc-data-label">Fecha</div><div class="tyc-data-val">20 de Julio 2026</div></div>
+        <div class="tyc-data-item"><div class="tyc-data-label">Horario</div><div class="tyc-data-val">10:00 – 10:30 hrs</div></div>
+        <div class="tyc-data-item"><div class="tyc-data-label">Modalidad</div><div class="tyc-data-val">Plataforma electrónica certificada</div></div>
+      </div>
+      <p class="tyc-text">El sorteo se realizará con acta interna, video y presencia de notario o auditor certificado.</p>
+    </div>
+
+    <!-- 8. PREMIOS -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">08</p>
+      <h3 class="tyc-art-title">Premios</h3>
+      <p class="tyc-text">Los premios consisten en:</p>
+      <div class="tyc-prize-row">
+        <div class="tyc-prize-n">×4</div>
+        <div>
+          <div class="tyc-prize-name">Televisor Samsung</div>
+          <div class="tyc-prize-detail">Un (1) televisor Samsung por ganador · 4 ganadores en total</div>
+        </div>
+      </div>
+      <p class="tyc-text" style="margin-top:.8rem">Los premios son:</p>
+      <ul class="tyc-list">
+        <li>Personales e intransferibles</li>
+        <li>No canjeables por dinero en efectivo</li>
+        <li>No sustituibles, salvo falta de stock</li>
+      </ul>
+      <div class="tyc-highlight">Si no hubiese stock del modelo asignado, EL ORGANIZADOR podrá reemplazarlo por un televisor de la marca Samsung de igual o mayor valor comercial.</div>
+    </div>
+
+    <!-- 9. REQUISITOS DEL GANADOR -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">09</p>
+      <h3 class="tyc-art-title">Requisitos del ganador</h3>
+      <p class="tyc-text">Para ser declarado ganador, la persona deberá:</p>
+      <ul class="tyc-list">
+        <li>Ser mayor de <strong>18 años</strong></li>
+        <li>Residir en la República del Perú</li>
+        <li>Presentar DNI o Carné de Extranjería vigente</li>
+        <li>Presentar ticket original si se solicita</li>
+        <li>Firmar cargo de entrega y autorización de imagen</li>
+      </ul>
+      <div class="tyc-highlight">Si el ganador no acredita mayoría de edad o documentación válida, perderá automáticamente el premio y se procederá con el suplente.</div>
+    </div>
+
+    <!-- 10. CONTACTO Y ENTREGA -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">10</p>
+      <h3 class="tyc-art-title">Contacto y entrega del premio</h3>
+      <p class="tyc-text">Los ganadores serán contactados por llamada telefónica, WhatsApp o correo electrónico (si aplica) a los medios consignados en el registro.</p>
+      <div class="tyc-highlight">Si luego de <strong>3 intentos en 5 días hábiles</strong> el ganador no responde, o hubiera consignado datos incorrectos, perderá el premio sin responsabilidad del ORGANIZADOR. En tal situación, EL ORGANIZADOR podrá declarar el premio desierto y elegir un suplente.</div>
+      <p class="tyc-text">La entrega se realizará dentro de <strong>30 días calendario</strong> posteriores al contacto exitoso con el ganador.</p>
+    </div>
+
+    <!-- 11. RESTRICCIONES -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">11</p>
+      <h3 class="tyc-art-title">Restricciones y descalificación</h3>
+      <p class="tyc-text">Serán descalificados los participantes que:</p>
+      <ul class="tyc-list">
+        <li>Falsifiquen tickets o suplanten identidad</li>
+        <li>No cuenten con DNI o Carné de Extranjería peruano vigente</li>
+        <li>Cuenten únicamente con PTP o pasaporte extranjero</li>
+        <li>Sean empleados, cónyuge o familiares hasta el cuarto grado de consanguinidad del ORGANIZADOR o de agencias vinculadas a la campaña</li>
+        <li>Sean creadores de contenido trabajando directamente en la campaña</li>
+        <li>Utilicen bots, automatización, identidades falsas o cualquier mecanismo distinto a la mecánica establecida</li>
+        <li>Presenten información falsa o intenten manipular el sorteo</li>
+        <li>Incumplan cualquier punto de estos T&amp;C</li>
+      </ul>
+      <div class="tyc-highlight">EL ORGANIZADOR podrá iniciar acciones civiles o penales cuando corresponda.</div>
+    </div>
+
+    <!-- 12. USO DE IMAGEN -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">12</p>
+      <h3 class="tyc-art-title">Uso de imagen</h3>
+      <p class="tyc-text">Los ganadores autorizan a EL ORGANIZADOR a difundir su nombre, imagen, voz, ciudad y foto de entrega del premio en redes sociales, web, medios de comunicación y puntos de venta, <strong>sin compensación adicional</strong>.</p>
+      <p class="tyc-text">Al aceptar el premio, los participantes ceden gratuitamente los derechos de uso, explotación, reproducción y adaptación de su imagen, testimonios y publicación, en la medida que la legislación aplicable lo permita y directamente relacionado con su participación en esta Promoción.</p>
+    </div>
+
+    <!-- 13. DATOS PERSONALES -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">13</p>
+      <h3 class="tyc-art-title">Tratamiento de datos personales</h3>
+      <p class="tyc-text">De conformidad con la <strong>Ley N° 29733, Ley de Protección de Datos Personales</strong> y su Reglamento (D.S. N° 003-2013-JUS), el participante autoriza a EL ORGANIZADOR a recopilar, registrar, almacenar, conservar, modificar y tratar sus datos personales para:</p>
+      <ul class="tyc-list">
+        <li>Gestionar la participación y tramitar los premios</li>
+        <li>Elaborar bases de datos de forma indefinida</li>
+        <li>Elaborar constancias de entrega ante eventuales reclamos ante INDECOPI y la debida sustentación ante SUNAT</li>
+        <li>Comunicaciones comerciales (con autorización expresa del participante)</li>
+      </ul>
+      <p class="tyc-text">Al término de la vigencia del concurso, se eliminarán todos los datos personales de los concursantes que no hayan ganado premio alguno. El participante podrá ejercer sus derechos ARCO (acceso, rectificación, cancelación y oposición) contactando al ORGANIZADOR.</p>
+    </div>
+
+    <!-- 14. RESPONSABILIDAD -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">14</p>
+      <h3 class="tyc-art-title">Limitación de responsabilidad</h3>
+      <p class="tyc-text">EL ORGANIZADOR no será responsable por:</p>
+      <ul class="tyc-list">
+        <li>Fallas de WhatsApp, errores de red móvil o internet no imputables al ORGANIZADOR</li>
+        <li>Tickets no enviados por problemas del usuario o información mal digitada</li>
+        <li>Imposibilidad de contacto por datos incorrectos consignados en el registro</li>
+        <li>Caso fortuito o fuerza mayor que impida la entrega del premio</li>
+        <li>Incumplimiento del concursante a lo establecido en las presentes bases</li>
+      </ul>
+    </div>
+
+    <!-- 15. MODIFICACIONES -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">15</p>
+      <h3 class="tyc-art-title">Vigencia y modificación de las bases</h3>
+      <p class="tyc-text">EL ORGANIZADOR podrá extender el plazo de vigencia de la Promoción Comercial, si las circunstancias así lo ameritan, informando oportunamente a los participantes.</p>
+      <p class="tyc-text">EL ORGANIZADOR se reserva el derecho de modificar, suspender o cancelar la Promoción cuando circunstancias no imputables al ORGANIZADOR así lo justifiquen, incluyendo casos de fuerza mayor. Cualquier modificación entrará en vigencia desde la fecha en que fue informada.</p>
+    </div>
+
+    <!-- 16. PUBLICACIÓN -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">16</p>
+      <h3 class="tyc-art-title">Publicación e información al consumidor</h3>
+      <p class="tyc-text">La Campaña Promocional será informada al público durante todo el período de vigencia a través de página web oficial, redes sociales y otros medios que EL ORGANIZADOR determine.</p>
+      <p class="tyc-text">Para consultas sobre la campaña, los consumidores participantes podrán contactar a EL ORGANIZADOR en:</p>
+      <div class="tyc-highlight"><strong>inteligencia.comercial@bodegasdonluis.pe</strong></div>
+    </div>
+
+    <!-- 17. ACEPTACIÓN -->
+    <div class="tyc-article">
+      <p class="tyc-art-num">17</p>
+      <h3 class="tyc-art-title">Aceptación</h3>
+      <p class="tyc-text">La participación en esta campaña implica el conocimiento y la aceptación íntegra de las presentes Bases y Condiciones por parte del participante, no pudiendo deducir reclamo o acción de cualquier naturaleza en contra del ORGANIZADOR, sus ejecutivos, trabajadores o representantes.</p>
+    </div>
+
+    <!-- ACCEPTANCE BLOCK -->
+    <div class="acceptance-block">
+      <p>"Al participar en esta campaña, declaro haber leído, comprendido y aceptado íntegramente los presentes Términos y Condiciones, así como ser mayor de 18 años de edad."</p>
+      <span>Bodegas Don Luis S.A.C. · RUC 20451583060 · Lima, Perú · 2026</span>
+    </div>
+  </div><!-- /tyc-card -->
+
+  <div class="divider"><div class="divider-line"></div><div class="divider-diamond"></div><div class="divider-line"></div></div>
+
+  <p style="font-size:.8rem;color:var(--stone);text-align:center;line-height:1.8">¿Tienes consultas sobre la campaña?<br>Escríbenos a <a href="mailto:inteligencia.comercial@bodegasdonluis.pe" style="color:var(--copper);text-decoration:none">inteligencia.comercial@bodegasdonluis.pe</a></p>
+
+</div><!-- /content-wrap -->
+
+<!-- ALCOHOL WARNING -->
+<div class="alcohol-warning">
+  <p>TOMAR BEBIDAS ALCOHÓLICAS EN EXCESO ES DAÑINO · PROHIBIDA LA VENTA A MENORES DE 18 AÑOS · D.L. 28681</p>
+</div>
+
+<!-- FOOTER -->
+<footer class="page-footer">
+  <a href="index.html"><img src="Logo_BDL.png" alt="Bodegas Don Luis"></a>
+  <p class="footer-contact">Consultas: <a href="mailto:inteligencia.comercial@bodegasdonluis.pe">inteligencia.comercial@bodegasdonluis.pe</a></p>
+  <p class="footer-note">© 2026 Bodegas Don Luis S.A.C. · RUC 20451583060 · Todos los derechos reservados · Lima, Perú<br>El consumo de alcohol es nocivo para la salud. Prohibida la venta a menores de 18 años. D.L. 28681.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  var el=document.getElementById('progressBar');
+  var st=window.scrollY||document.documentElement.scrollTop;
+  var dh=document.documentElement.scrollHeight-window.innerHeight;
+  el.style.width=(dh>0?Math.min(100,(st/dh)*100):0)+'%';
+});
+</script>
+</body>
+</html>
